@@ -129,7 +129,7 @@ export const additionalTranslations = {
     'cta.title': '准备好用AI转型您的业务了吗？',
     'cta.subtitle': '加入50+家通过我们AI转型解决方案节省数百万的企业。100%满意保证。',
     'cta.button1': '预约免费咨询',
-    'cta.button2': '下载案例研究',
+    'cta.button2': '下载AI转型领导者指南',
     'cta.note': '无需承诺 • 免费AI评估 • 24小时内回复',
     
     // Footer
@@ -279,7 +279,7 @@ export const additionalTranslations = {
     'cta.title': 'AIでビジネスを変革する準備はできましたか？',
     'cta.subtitle': 'AI変革ソリューションで数百万を節約した50+企業に参加。100%満足保証。',
     'cta.button1': '無料コンサルテーション予約',
-    'cta.button2': 'ケーススタディダウンロード',
+    'cta.button2': 'AI変革リーダーガイドダウンロード',
     'cta.note': 'コミット不要 • 無料AI評価 • 24時間以内に回答',
     
     // Footer
@@ -423,7 +423,7 @@ export const additionalTranslations = {
     'cta.title': 'AI로 비즈니스를 혁신할 준비가 되셨나요?',
     'cta.subtitle': 'AI 혁신 솔루션으로 수백만을 절약한 50+ 기업에 합류하세요. 100% 만족 보장.',
     'cta.button1': '무료 컨설테이션 예약',
-    'cta.button2': '케이스 스터디 다운로드',
+    'cta.button2': 'AI 혁신 리더 가이드 다운로드',
     'cta.note': '약속 불필요 • 무료 AI 평가 • 24시간 내 응답',
     
     'footer.desc': '기업 AI 혁신 전문가로서 최첨단 AI 솔루션을 통해 비즈니스 자동화 및 확장을 지원합니다.',
@@ -491,6 +491,8 @@ export const additionalTranslations = {
     'team.auto.long': 'N8N',
     
     'cta.title': 'هل أنت مستعد لتحويل عملك بالذكاء الاصطناعي؟',
+    'cta.button1': 'حجز استشارة مجانية',
+    'cta.button2': 'تحميل دليل قائد تحول الذكاء الاصطناعي',
     'footer.copyright': '© 2024 Tenten AI. جميع الحقوق محفوظة.',
   }
 } 

@@ -162,7 +162,7 @@ const translations = {
     'cta.title': 'Ready to Transform Your Business with AI?',
     'cta.subtitle': 'Join 50+ enterprise companies who\'ve saved millions with our AI transformation solutions. 100% satisfaction guarantee.',
     'cta.button1': 'Schedule Free Consultation',
-    'cta.button2': 'Download Case Studies',
+    'cta.button2': 'Download The Leader\'s Guide to AI Transformation',
     'cta.note': 'No commitment required • Free AI assessment • Response within 24 hours',
     
     // Footer
@@ -307,7 +307,7 @@ const translations = {
     'cta.title': '準備好用AI轉型您的業務了嗎？',
     'cta.subtitle': '加入50+家透過我們AI轉型解決方案節省數百萬的企業。100%滿意保證。',
     'cta.button1': '預約免費諮詢',
-    'cta.button2': '下載案例研究',
+    'cta.button2': '下載AI轉型領導者指南',
     'cta.note': '無需承諾 • 免費AI評估 • 24小時內回覆',
     
     // Footer

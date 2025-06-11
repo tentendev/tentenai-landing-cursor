@@ -148,12 +148,12 @@ export default function LanguagePage({ params }: PageProps) {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <button className="bg-black text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-800">
+              <a href="https://tenten.co/contact" className="bg-black text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-800 text-center">
                 {t('hero.cta1')}
-              </button>
-              <button className="border border-gray-300 text-gray-700 px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-50">
+              </a>
+              <a href="https://s4.tenten.co/Leaders-Guide-to-AI-Transformation_TentenAI.pdf" target="_blank" rel="noopener noreferrer" className="border border-gray-300 text-gray-700 px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-50 text-center">
                 {t('hero.cta2')}
-              </button>
+              </a>
             </div>
 
             <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-600">
@@ -647,12 +647,12 @@ export default function LanguagePage({ params }: PageProps) {
             {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-black px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-100">
+            <a href="https://tenten.co/contact" className="bg-white text-black px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-100 text-center">
               {t('cta.button1')}
-            </button>
-            <button className="border border-white text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-white hover:text-black transition-colors">
+            </a>
+            <a href="https://s4.tenten.co/The-Leaders-Guide-to-AI-Transformation-tentenai.pdf" target="_blank" rel="noopener noreferrer" className="border border-white text-white px-8 py-4 rounded-md text-lg font-medium hover:bg-white hover:text-black transition-colors text-center">
               {t('cta.button2')}
-            </button>
+            </a>
           </div>
           <p className="text-sm text-gray-400 mt-6">
             {t('cta.note')}
