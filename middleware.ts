@@ -1,16 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Domain mapping for production
-const domainMapping = {
-  'en': 'tentenai.com',
-  'zh': 'tentenai.tw',
-  'zh-cn': 'tentenai.cn', 
-  'ja': 'tentenai.jp',
-  'ko': 'tentenai.kr',
-  'ar': 'tentenai.ae'
-}
-
 // Detect language from browser Accept-Language header
 function detectLanguageFromHeaders(acceptLanguage: string | null): string {
   if (!acceptLanguage) return 'en'
@@ -27,20 +17,8 @@ function detectLanguageFromHeaders(acceptLanguage: string | null): string {
   return 'en' // Default to English
 }
 
-// Get language from current domain
-function getLanguageFromDomain(hostname: string): string {
-  for (const [lang, domain] of Object.entries(domainMapping)) {
-    if (hostname.includes(domain)) {
-      return lang
-    }
-  }
-  return 'en'
-}
-
 export function middleware(request: NextRequest) {
-  const hostname = request.headers.get('host') || ''
   const pathname = request.nextUrl.pathname
-  const searchParams = request.nextUrl.searchParams
   
   // Skip middleware for static assets and API routes
   if (
@@ -51,54 +29,26 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // For development/staging environments (localhost, vercel.app)
-  if (hostname.includes('localhost') || hostname.includes('vercel.app')) {
-    const langParam = searchParams.get('lang')
+  // Only handle root path for auto-detection
+  if (pathname === '/') {
+    const acceptLanguage = request.headers.get('accept-language')
+    const detectedLang = detectLanguageFromHeaders(acceptLanguage)
     
-    // If no lang parameter, detect from browser and redirect
-    if (!langParam) {
-      const acceptLanguage = request.headers.get('accept-language')
-      const detectedLang = detectLanguageFromHeaders(acceptLanguage)
+    // If browser language is not English and user hasn't set preference, redirect to language path
+    if (detectedLang !== 'en' && !request.cookies.get('language-preference')) {
+      const redirectUrl = new URL(`/${detectedLang}`, request.url)
+      const response = NextResponse.redirect(redirectUrl)
       
-      // Only redirect if not already English (default)
-      if (detectedLang !== 'en') {
-        const url = request.nextUrl.clone()
-        url.searchParams.set('lang', detectedLang)
-        return NextResponse.redirect(url)
-      }
+      // Set cookie to remember user preference (optional, expires in 1 day)
+      response.cookies.set('language-preference', detectedLang, { 
+        maxAge: 60 * 60 * 24, // 1 day
+        httpOnly: false, // Allow client-side access
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax'
+      })
+      
+      return response
     }
-    
-    return NextResponse.next()
-  }
-
-  // For production environments with multiple domains
-  const domainLang = getLanguageFromDomain(hostname)
-  const acceptLanguage = request.headers.get('accept-language')
-  const detectedLang = detectLanguageFromHeaders(acceptLanguage)
-  
-  // If user's browser language doesn't match the domain language
-  // and this is their first visit (no previous language preference)
-  if (
-    domainLang !== detectedLang && 
-    !request.cookies.get('preferred-language') &&
-    domainMapping[detectedLang as keyof typeof domainMapping]
-  ) {
-    // Redirect to appropriate domain
-    const targetDomain = domainMapping[detectedLang as keyof typeof domainMapping]
-    const protocol = request.nextUrl.protocol
-    
-    const redirectUrl = `${protocol}//${targetDomain}${pathname}${searchParams.toString() ? '?' + searchParams.toString() : ''}`
-    
-    const response = NextResponse.redirect(redirectUrl)
-    // Set cookie to remember user preference
-    response.cookies.set('preferred-language', detectedLang, { 
-      maxAge: 60 * 60 * 24 * 30, // 30 days
-      httpOnly: true,
-      secure: true,
-      sameSite: 'lax'
-    })
-    
-    return response
   }
 
   return NextResponse.next()

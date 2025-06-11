@@ -4,7 +4,7 @@ import { useLanguage } from './contexts/LanguageContext'
 import DomainInfo from './components/DomainInfo'
 
 export default function Home() {
-  const { language, setLanguage, t, redirectToDomain, autoDetectLanguage } = useLanguage()
+  const { language, t, navigateToLanguage, autoDetectLanguage } = useLanguage()
 
   return (
     <main className="min-h-screen bg-white">
@@ -26,10 +26,7 @@ export default function Home() {
               <div className="flex items-center space-x-2">
                 <div className="flex items-center bg-gray-100 rounded-md p-1">
                   <button
-                    onClick={() => {
-                      setLanguage('en')
-                      redirectToDomain('en')
-                    }}
+                    onClick={() => navigateToLanguage('en')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'en'
                         ? 'bg-white text-gray-900 shadow-sm'
@@ -39,10 +36,7 @@ export default function Home() {
                     🌍 EN
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('zh')
-                      redirectToDomain('zh')
-                    }}
+                    onClick={() => navigateToLanguage('zh')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'zh'
                         ? 'bg-white text-gray-900 shadow-sm'
@@ -52,10 +46,7 @@ export default function Home() {
                     🇹🇼 繁中
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('zh-cn')
-                      redirectToDomain('zh-cn')
-                    }}
+                    onClick={() => navigateToLanguage('zh-cn')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'zh-cn'
                         ? 'bg-white text-gray-900 shadow-sm'
@@ -65,10 +56,7 @@ export default function Home() {
                     🇨🇳 简中
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('ja')
-                      redirectToDomain('ja')
-                    }}
+                    onClick={() => navigateToLanguage('ja')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'ja'
                         ? 'bg-white text-gray-900 shadow-sm'
@@ -78,10 +66,7 @@ export default function Home() {
                     🇯🇵 日本
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('ko')
-                      redirectToDomain('ko')
-                    }}
+                    onClick={() => navigateToLanguage('ko')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'ko'
                         ? 'bg-white text-gray-900 shadow-sm'
@@ -91,10 +76,7 @@ export default function Home() {
                     🇰🇷 한국
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('ar')
-                      redirectToDomain('ar')
-                    }}
+                    onClick={() => navigateToLanguage('ar')}
                     className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                       language === 'ar'
                         ? 'bg-white text-gray-900 shadow-sm'

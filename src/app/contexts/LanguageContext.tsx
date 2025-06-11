@@ -2,16 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { additionalTranslations } from './AdditionalTranslations'
-
-// Domain mapping for each language
-const domainMapping = {
-  'en': 'tentenai.com',
-  'zh': 'tentenai.tw',
-  'zh-cn': 'tentenai.cn', 
-  'ja': 'tentenai.jp',
-  'ko': 'tentenai.kr',
-  'ar': 'tentenai.ae'
-}
+import { useRouter, usePathname } from 'next/navigation'
 
 // Language detection from browser locale
 const detectBrowserLanguage = (): Language => {
@@ -29,60 +20,19 @@ const detectBrowserLanguage = (): Language => {
   return 'en' // Default to English
 }
 
-// Get current domain from window location
-const getCurrentDomain = (): string => {
-  if (typeof window === 'undefined') return 'localhost:3000'
-  return window.location.host
-}
-
-// Get language from current domain
-const getLanguageFromDomain = (): Language => {
-  const currentDomain = getCurrentDomain()
+// Get language from current URL path
+const getLanguageFromPath = (pathname: string): Language => {
+  // Extract language from path like /zh, /ja, etc.
+  const pathSegments = pathname.split('/').filter(Boolean)
+  const langFromPath = pathSegments[0]
   
-  // Find language based on current domain
-  for (const [lang, domain] of Object.entries(domainMapping)) {
-    if (currentDomain.includes(domain) || currentDomain.includes(domain.split('.')[0])) {
-      return lang as Language
-    }
+  // Check if first segment is a valid language
+  const validLanguages: Language[] = ['en', 'zh', 'zh-cn', 'ja', 'ko', 'ar']
+  if (validLanguages.includes(langFromPath as Language)) {
+    return langFromPath as Language
   }
   
-  // For development/localhost, check URL parameters or default to browser language
-  if (typeof window !== 'undefined') {
-    const urlParams = new URLSearchParams(window.location.search)
-    const langParam = urlParams.get('lang')
-    
-    if (langParam && Object.keys(domainMapping).includes(langParam)) {
-      return langParam as Language
-    }
-  }
-  
-  return detectBrowserLanguage() as Language
-}
-
-// Redirect to appropriate domain based on language
-const redirectToDomain = (targetLang: string) => {
-  if (typeof window === 'undefined') return
-  
-  const currentDomain = getCurrentDomain()
-  const targetDomain = domainMapping[targetLang as keyof typeof domainMapping]
-  
-  // Don't redirect if already on correct domain
-  if (currentDomain.includes(targetDomain)) return
-  
-  // For development, use URL parameters instead of domain switching
-  if (currentDomain.includes('localhost') || currentDomain.includes('vercel.app')) {
-    const currentUrl = new URL(window.location.href)
-    currentUrl.searchParams.set('lang', targetLang)
-    window.history.pushState({}, '', currentUrl.toString())
-    return
-  }
-  
-  // For production, redirect to appropriate domain
-  const protocol = window.location.protocol
-  const pathname = window.location.pathname
-  const search = window.location.search
-  
-  window.location.href = `${protocol}//${targetDomain}${pathname}${search}`
+  return 'en' // Default to English for root path
 }
 
 type Language = 'en' | 'zh' | 'zh-cn' | 'ja' | 'ko' | 'ar'
@@ -91,7 +41,7 @@ interface LanguageContextType {
   language: Language
   setLanguage: (lang: Language) => void
   t: (key: string) => string
-  redirectToDomain: (lang: Language) => void
+  navigateToLanguage: (lang: Language) => void
   autoDetectLanguage: () => void
 }
 
@@ -360,32 +310,57 @@ const translations = {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(getLanguageFromDomain())
+  const router = useRouter()
+  const pathname = usePathname()
+  const [language, setLanguage] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'en'
+    return getLanguageFromPath(pathname)
+  })
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key
   }
 
-  const handleRedirectToDomain = (lang: Language) => {
-    redirectToDomain(lang)
-  }
-
-  const autoDetectLanguage = () => {
-    const newLanguage = getLanguageFromDomain()
-    if (newLanguage !== language) {
-      setLanguage(newLanguage)
+  const navigateToLanguage = (lang: Language) => {
+    setLanguage(lang)
+    
+    // Navigate to the new language path
+    if (lang === 'en') {
+      // For English, go to root
+      router.push('/')
+    } else {
+      // For other languages, go to /{lang}
+      router.push(`/${lang}`)
     }
   }
 
+  const autoDetectLanguage = () => {
+    const currentLang = getLanguageFromPath(pathname)
+    if (currentLang !== language) {
+      setLanguage(currentLang)
+    }
+  }
+
+  // Auto-detect browser language on first visit to root
+  useEffect(() => {
+    if (pathname === '/' && language === 'en') {
+      const browserLang = detectBrowserLanguage()
+      if (browserLang !== 'en') {
+        navigateToLanguage(browserLang)
+      }
+    }
+  }, [pathname, language, navigateToLanguage])
+
+  // Update language when path changes
   useEffect(() => {
     autoDetectLanguage()
-  }, [language]) // Add language as dependency to satisfy React hooks
+  }, [pathname, autoDetectLanguage])
 
-      return (
-      <LanguageContext.Provider value={{ language, setLanguage, t, redirectToDomain: handleRedirectToDomain, autoDetectLanguage }}>
-        {children}
-      </LanguageContext.Provider>
-    )
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t, navigateToLanguage, autoDetectLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  )
 }
 
 export function useLanguage() {
