@@ -2,7 +2,7 @@
 
 import { useLanguage } from './contexts/LanguageContext'
 
-export default function Home() {
+export default function HomeV2() {
   const { language, setLanguage, t } = useLanguage()
 
   return (
@@ -25,7 +25,7 @@ export default function Home() {
               <div className="flex items-center bg-gray-100 rounded-md p-1">
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                  className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                     language === 'en'
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
@@ -35,54 +35,13 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setLanguage('zh')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                  className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                     language === 'zh'
                       ? 'bg-white text-gray-900 shadow-sm'
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
-                  繁中
-                </button>
-                <button
-                  onClick={() => setLanguage('zh-cn')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'zh-cn'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  简中
-                </button>
-                <button
-                  onClick={() => setLanguage('ja')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ja'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  日本
-                </button>
-                <button
-                  onClick={() => setLanguage('ko')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ko'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  한국
-                </button>
-                <button
-                  onClick={() => setLanguage('ar')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ar'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                  dir="rtl"
-                >
-                  عربي
+                  中文
                 </button>
               </div>
               <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 font-medium">
@@ -137,48 +96,13 @@ export default function Home() {
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-600 mb-8">{t('trust.title')}</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
-            {/* Using SVG logos inspired by logoipsum */}
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <rect x="10" y="15" width="100" height="10" rx="5" fill="currentColor" />
-                <circle cx="20" cy="20" r="8" fill="currentColor" />
-                <text x="35" y="23" fontSize="8" fill="white" fontFamily="Arial, sans-serif">Acme Corp</text>
-              </svg>
-            </div>
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <polygon points="20,8 30,8 35,20 30,32 20,32 15,20" fill="currentColor" />
-                <text x="40" y="23" fontSize="8" fill="currentColor" fontFamily="Arial, sans-serif">Lightbox</text>
-              </svg>
-            </div>
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" strokeWidth="2" />
-                <circle cx="20" cy="20" r="6" fill="currentColor" />
-                <text x="38" y="23" fontSize="8" fill="currentColor" fontFamily="Arial, sans-serif">Quantum</text>
-              </svg>
-            </div>
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <rect x="15" y="10" width="10" height="20" rx="2" fill="currentColor" />
-                <rect x="30" y="15" width="10" height="15" rx="2" fill="currentColor" />
-                <text x="45" y="23" fontSize="8" fill="currentColor" fontFamily="Arial, sans-serif">Boltshift</text>
-              </svg>
-            </div>
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <path d="M15 20 L25 10 L35 20 L25 30 Z" fill="currentColor" />
-                <text x="40" y="23" fontSize="8" fill="currentColor" fontFamily="Arial, sans-serif">AlphaWave</text>
-              </svg>
-            </div>
-            <div className="flex items-center justify-center">
-              <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
-                <rect x="12" y="12" width="16" height="16" rx="8" fill="currentColor" />
-                <rect x="16" y="16" width="8" height="8" rx="4" fill="white" />
-                <text x="32" y="23" fontSize="8" fill="currentColor" fontFamily="Arial, sans-serif">Capsule</text>
-              </svg>
-            </div>
+          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+            {/* Placeholder for company logos */}
+            <div className="bg-gray-200 h-12 w-32 rounded flex items-center justify-center text-gray-500">Logo 1</div>
+            <div className="bg-gray-200 h-12 w-32 rounded flex items-center justify-center text-gray-500">Logo 2</div>
+            <div className="bg-gray-200 h-12 w-32 rounded flex items-center justify-center text-gray-500">Logo 3</div>
+            <div className="bg-gray-200 h-12 w-32 rounded flex items-center justify-center text-gray-500">Logo 4</div>
+            <div className="bg-gray-200 h-12 w-32 rounded flex items-center justify-center text-gray-500">Logo 5</div>
           </div>
         </div>
       </section>
@@ -471,11 +395,7 @@ export default function Home() {
                 {t('testimonials.1.content')}
               </p>
               <div className="flex items-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                  alt="Michael Chen" 
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
-                />
+                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                 <div>
                   <div className="font-semibold text-gray-900">{t('testimonials.1.name')}</div>
                   <div className="text-sm text-gray-600">{t('testimonials.1.title')}</div>
@@ -491,11 +411,7 @@ export default function Home() {
                 {t('testimonials.2.content')}
               </p>
               <div className="flex items-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                  alt="Sarah Johnson" 
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
-                />
+                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                 <div>
                   <div className="font-semibold text-gray-900">{t('testimonials.2.name')}</div>
                   <div className="text-sm text-gray-600">{t('testimonials.2.title')}</div>
@@ -511,11 +427,7 @@ export default function Home() {
                 {t('testimonials.3.content')}
               </p>
               <div className="flex items-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                  alt="David Rodriguez" 
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
-                />
+                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
                 <div>
                   <div className="font-semibold text-gray-900">{t('testimonials.3.name')}</div>
                   <div className="text-sm text-gray-600">{t('testimonials.3.title')}</div>
@@ -538,38 +450,22 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-6 rounded-lg text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                alt="Webflow Expert" 
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-              />
+              <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
               <h3 className="font-semibold text-gray-900 mb-2">{t('team.webflow')}</h3>
               <p className="text-gray-600 text-sm">{t('team.webflow.desc')}</p>
             </div>
             <div className="bg-white p-6 rounded-lg text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                alt="Shopify Specialist" 
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-              />
+              <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
               <h3 className="font-semibold text-gray-900 mb-2">{t('team.shopify')}</h3>
               <p className="text-gray-600 text-sm">{t('team.shopify.desc')}</p>
             </div>
             <div className="bg-white p-6 rounded-lg text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                alt="AI Engineer" 
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-              />
+              <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
               <h3 className="font-semibold text-gray-900 mb-2">{t('team.ai')}</h3>
               <p className="text-gray-600 text-sm">{t('team.ai.desc')}</p>
             </div>
             <div className="bg-white p-6 rounded-lg text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
-                alt="N8N Automation Expert" 
-                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-              />
+              <div className="w-20 h-20 bg-gray-300 rounded-full mx-auto mb-4"></div>
               <h3 className="font-semibold text-gray-900 mb-2">{t('team.n8n')}</h3>
               <p className="text-gray-600 text-sm">{t('team.n8n.desc')}</p>
             </div>
@@ -644,4 +540,4 @@ export default function Home() {
       </footer>
     </main>
   )
-}
+} 
