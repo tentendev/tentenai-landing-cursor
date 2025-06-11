@@ -42,6 +42,8 @@ export const additionalTranslations = {
     'story.hero.subtitle': '我们如何发现AI潜力与企业现实之间的差距',
     'story.problem.title': '200万美元的问题',
     'story.problem.content': '2022年，我们看到一家财富500强企业花费230万美元与四大咨询公司进行AI转型项目。18个月后，他们得到了精美的PowerPoint简报、理论框架，但零实施解决方案。',
+    'story.problem.wasted': '失败AI项目的浪费',
+    'story.problem.zero': '零实施解决方案',
     'story.discovery.title': '突破时刻',
     'story.discovery.content': '这时我们意识到根本性的断层：传统顾问销售策略，但企业需要的是实用的解决方案。',
     'story.solution.title': '架桥筑路',
@@ -51,6 +53,8 @@ export const additionalTranslations = {
     'story.impact.stat2': '节省超过 $1,000万 运营成本',
     'story.impact.stat3': '90% 更快实施速度',
     'story.impact.stat4': '100% 客户满意度',
+    'story.mission.title': '我们的使命',
+    'story.mission.desc': '弥合AI潜力与企业现实之间的差距',
     
     // CTA and Footer (abbreviated for space)
     'cta.title': '准备好用AI转型您的业务了吗？',
@@ -88,6 +92,10 @@ export const additionalTranslations = {
     'story.hero.subtitle': 'AIの潜在能力と企業の現実のギャップをどう発見したか',
     'story.problem.title': '200万ドルの問題',
     'story.problem.content': '2022年、フォーチュン500企業が大手4コンサルティング会社とのAI変革プロジェクトに230万ドルを費やすのを見ました。18ヶ月後、美しいPowerPointプレゼンテーション、理論的フレームワークはありましたが、実装されたソリューションはゼロでした。',
+    'story.problem.wasted': '失敗したAIプロジェクトへの浪費',
+    'story.problem.zero': '実装されたソリューションはゼロ',
+    'story.mission.title': '私たちのミッション',
+    'story.mission.desc': 'AIの可能性と企業現実のギャップを埋める',
     
     'cta.title': 'AIでビジネスを変革する準備はできましたか？',
     'footer.copyright': '© 2024 Tenten AI. 全著作権所有。',
@@ -124,6 +132,10 @@ export const additionalTranslations = {
     'story.hero.subtitle': 'AI 잠재력과 기업 현실 사이의 격차를 어떻게 발견했는지',
     'story.problem.title': '200만 달러 문제',
     'story.problem.content': '2022년, 포춘 500대 기업이 빅4 컨설팅과 AI 혁신 프로젝트에 230만 달러를 지출하는 것을 보았습니다. 18개월 후, 아름다운 PowerPoint 프레젠테이션과 이론적 프레임워크는 있었지만 구현된 솔루션은 전무했습니다.',
+    'story.problem.wasted': '실패한 AI 프로젝트에 낭비',
+    'story.problem.zero': '구현된 솔루션 없음',
+    'story.mission.title': '우리의 미션',
+    'story.mission.desc': 'AI 잠재력과 기업 현실의 격차를 해소',
     
     'cta.title': 'AI로 비즈니스를 혁신할 준비가 되셨나요?',
     'footer.copyright': '© 2024 Tenten AI. 모든 권리 보유.',
@@ -160,6 +172,10 @@ export const additionalTranslations = {
     'story.hero.subtitle': 'كيف اكتشفنا الفجوة بين إمكانات الذكاء الاصطناعي وواقع المؤسسات',
     'story.problem.title': 'مشكلة المليوني دولار',
     'story.problem.content': 'في 2022، شاهدنا شركة من فورتشن 500 تنفق 2.3 مليون دولار على مشروع تحول الذكاء الاصطناعي مع شركة استشارية كبرى. بعد 18 شهراً، حصلوا على عروض PowerPoint جميلة وأطر نظرية، لكن صفر حلول مطبقة.',
+    'story.problem.wasted': 'إهدار في مشروع ذكاء اصطناعي فاشل',
+    'story.problem.zero': 'لا حلول مطبقة',
+    'story.mission.title': 'مهمتنا',
+    'story.mission.desc': 'سد الفجوة بين إمكانات الذكاء الاصطناعي وواقع المؤسسات',
     
     'cta.title': 'هل أنت مستعد لتحويل عملك بالذكاء الاصطناعي؟',
     'footer.copyright': '© 2024 Tenten AI. جميع الحقوق محفوظة.',

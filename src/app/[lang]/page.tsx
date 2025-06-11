@@ -1,17 +1,17 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { notFound } from 'next/navigation'
 import { useLanguage } from '../contexts/LanguageContext'
 import DomainInfo from '../components/DomainInfo'
-import { notFound } from 'next/navigation'
+
+const validLanguages = ['zh', 'zh-cn', 'ja', 'ko', 'ar']
 
 interface PageProps {
   params: Promise<{
     lang: string
   }>
 }
-
-const validLanguages = ['zh', 'zh-cn', 'ja', 'ko', 'ar']
 
 export default function LanguagePage({ params }: PageProps) {
   const { language, setLanguage, t, navigateToLanguage } = useLanguage()
@@ -174,7 +174,7 @@ export default function LanguagePage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-gray-600 mb-8">{t('trust.title')}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
-            {/* Company Logos */}
+            {/* Using SVG logos inspired by logoipsum */}
             <div className="flex items-center justify-center">
               <svg width="120" height="40" viewBox="0 0 120 40" className="text-gray-400">
                 <rect x="10" y="15" width="100" height="10" rx="5" fill="currentColor" />
@@ -219,67 +219,10 @@ export default function LanguagePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('services.title')}</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('services.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="text-4xl mb-4">🤖</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('services.ai.title')}</h3>
-              <p className="text-gray-600 mb-4">
-                {t('services.ai.desc')}
-              </p>
-              <div className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                {t('services.ai.replaces')}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="text-4xl mb-4">🎨</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('services.creative.title')}</h3>
-              <p className="text-gray-600 mb-4">
-                {t('services.creative.desc')}
-              </p>
-              <div className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                {t('services.creative.replaces')}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="text-4xl mb-4">🛒</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('services.ecommerce.title')}</h3>
-              <p className="text-gray-600 mb-4">
-                {t('services.ecommerce.desc')}
-              </p>
-              <div className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                {t('services.ecommerce.replaces')}
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <div className="text-4xl mb-4">⚡</div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('services.automation.title')}</h3>
-              <p className="text-gray-600 mb-4">
-                {t('services.automation.desc')}
-              </p>
-              <div className="text-sm font-medium text-green-600 bg-green-50 px-3 py-1 rounded-full">
-                {t('services.automation.replaces')}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Story Section */}
+      {/* NEW: Engaging Story Section */}
       <section id="story" className="py-20 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Story Hero */}
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               {t('story.hero.title')}
@@ -289,11 +232,13 @@ export default function LanguagePage({ params }: PageProps) {
             </p>
           </div>
 
+          {/* Story Timeline */}
           <div className="relative">
+            {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-red-400 via-orange-400 to-green-400 hidden lg:block"></div>
             
             <div className="space-y-16">
-              {/* Story parts would go here - abbreviated for brevity */}
+              {/* Story 1: The Problem */}
               <div className="flex flex-col lg:flex-row items-center gap-8">
                 <div className="lg:w-1/2 lg:pr-8 text-right">
                   <div className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-red-400">
@@ -306,12 +251,369 @@ export default function LanguagePage({ params }: PageProps) {
                     </p>
                   </div>
                 </div>
-                <div className="lg:w-1/2">
-                  <div className="w-16 h-16 bg-red-400 rounded-full mx-auto lg:mx-0 flex items-center justify-center text-white font-bold text-xl z-10 relative">
-                    1
+                <div className="hidden lg:block w-8 h-8 bg-red-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="lg:w-1/2 lg:pl-8">
+                  <div className="bg-red-50 p-6 rounded-lg">
+                    <div className="text-4xl font-bold text-red-600 mb-2">$2.3M</div>
+                    <div className="text-sm text-red-700">{t('story.problem.wasted')}</div>
+                    <div className="text-4xl font-bold text-red-600 mt-4">18 months</div>
+                    <div className="text-sm text-red-700">{t('story.problem.zero')}</div>
                   </div>
                 </div>
               </div>
+
+              {/* Story 2: The Discovery */}
+              <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
+                <div className="lg:w-1/2 lg:pl-8 text-left">
+                  <div className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-orange-400">
+                    <div className="text-6xl mb-4">💡</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {t('story.discovery.title')}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      {t('story.discovery.content')}
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden lg:block w-8 h-8 bg-orange-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="lg:w-1/2 lg:pr-8">
+                  <div className="bg-orange-50 p-6 rounded-lg">
+                    <div className="text-lg font-semibold text-orange-700 mb-2">The Gap:</div>
+                    <div className="text-sm text-orange-600 mb-4">Strategies ≠ Solutions</div>
+                    <div className="text-lg font-semibold text-orange-700 mb-2">What Enterprises Need:</div>
+                    <div className="text-sm text-orange-600">Working AI Systems</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Story 3: The Solution */}
+              <div className="flex flex-col lg:flex-row items-center gap-8">
+                <div className="lg:w-1/2 lg:pr-8 text-right">
+                  <div className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-blue-400">
+                    <div className="text-6xl mb-4">🔧</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {t('story.solution.title')}
+                    </h3>
+                    <p className="text-gray-700 leading-relaxed">
+                      {t('story.solution.content')}
+                    </p>
+                  </div>
+                </div>
+                <div className="hidden lg:block w-8 h-8 bg-blue-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="lg:w-1/2 lg:pl-8">
+                  <div className="bg-blue-50 p-6 rounded-lg">
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-2xl font-bold text-blue-600">AI</div>
+                        <div className="text-xs text-blue-700">Expertise</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-blue-600">Web</div>
+                        <div className="text-xs text-blue-700">Design</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-blue-600">Ecom</div>
+                        <div className="text-xs text-blue-700">Shopify</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-bold text-blue-600">Auto</div>
+                        <div className="text-xs text-blue-700">N8N</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Story 4: The Impact */}
+              <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
+                <div className="lg:w-1/2 lg:pl-8 text-left">
+                  <div className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-green-400">
+                    <div className="text-6xl mb-4">🚀</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {t('story.impact.title')}
+                    </h3>
+                    <div className="grid grid-cols-2 gap-6 mt-6">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-green-600">{t('story.impact.stat1')}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-green-600">{t('story.impact.stat2')}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-green-600">{t('story.impact.stat3')}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-green-600">{t('story.impact.stat4')}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:block w-8 h-8 bg-green-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+                <div className="lg:w-1/2 lg:pr-8">
+                  <div className="bg-green-50 p-6 rounded-lg text-center">
+                    <div className="text-4xl mb-2">🎯</div>
+                    <div className="text-lg font-semibold text-green-700">{t('story.mission.title')}</div>
+                    <div className="text-sm text-green-600 mt-2">{t('story.mission.desc')}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {t('services.title')}
+            </h2>
+            <p className="text-xl text-gray-600">
+              {t('services.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🤖</div>
+              <h3 className="text-xl font-semibold mb-3">{t('services.ai.title')}</h3>
+              <p className="text-gray-600 mb-4">{t('services.ai.desc')}</p>
+              <div className="text-sm text-gray-500">{t('services.ai.replaces')}</div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🎨</div>
+              <h3 className="text-xl font-semibold mb-3">{t('services.creative.title')}</h3>
+              <p className="text-gray-600 mb-4">{t('services.creative.desc')}</p>
+              <div className="text-sm text-gray-500">{t('services.creative.replaces')}</div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">🛒</div>
+              <h3 className="text-xl font-semibold mb-3">{t('services.ecommerce.title')}</h3>
+              <p className="text-gray-600 mb-4">{t('services.ecommerce.desc')}</p>
+              <div className="text-sm text-gray-500">{t('services.ecommerce.replaces')}</div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="text-3xl mb-4">⚡</div>
+              <h3 className="text-xl font-semibold mb-3">{t('services.automation.title')}</h3>
+              <p className="text-gray-600 mb-4">{t('services.automation.desc')}</p>
+              <div className="text-sm text-gray-500">{t('services.automation.replaces')}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section id="compare" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              {t('compare.title')}
+            </h2>
+            <p className="text-xl text-gray-600">
+              {t('compare.subtitle')}
+            </p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-medium text-gray-900"></th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
+                      <div className="flex flex-col items-center">
+                        <div className="text-lg font-bold">{t('compare.tentenai')}</div>
+                        <div className="text-xs text-gray-500">{t('compare.tentenai.sub')}</div>
+                      </div>
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
+                      <div className="flex flex-col items-center">
+                        <div className="text-lg font-bold">{t('compare.consultants')}</div>
+                        <div className="text-xs text-gray-500">{t('compare.consultants.sub')}</div>
+                      </div>
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
+                      <div className="flex flex-col items-center">
+                        <div className="text-lg font-bold">{t('compare.agencies')}</div>
+                        <div className="text-xs text-gray-500">{t('compare.agencies.sub')}</div>
+                      </div>
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
+                      <div className="flex flex-col items-center">
+                        <div className="text-lg font-bold">{t('compare.freelancers')}</div>
+                        <div className="text-xs text-gray-500">{t('compare.freelancers.sub')}</div>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  <tr>
+                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.cost')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-green-600 font-semibold">{t('compare.row.cost.tentenai')}</span>
+                    </td>
+                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.cost.consultants')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.cost.agencies')}</td>
+                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.cost.freelancers')}</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.timeline')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-green-600 font-semibold">{t('compare.row.timeline.tentenai')}</span>
+                    </td>
+                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.timeline.consultants')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.timeline.agencies')}</td>
+                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.timeline.freelancers')}</td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.outcome')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-green-600 font-semibold">{t('compare.row.outcome.tentenai')}</span>
+                    </td>
+                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.outcome.consultants')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.outcome.agencies')}</td>
+                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.outcome.freelancers')}</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.support')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-green-600 font-semibold">{t('compare.row.support.tentenai')}</span>
+                    </td>
+                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.support.consultants')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.support.agencies')}</td>
+                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.support.freelancers')}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('testimonials.title')}</h2>
+            <p className="text-xl text-gray-600">
+              {t('testimonials.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
+              <div className="flex items-center space-x-2 mb-4">
+                <span className="text-yellow-500">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6">
+                {t('testimonials.1.content')}
+              </p>
+              <div className="flex items-center">
+                <img 
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                  alt="Michael Chen" 
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{t('testimonials.1.name')}</div>
+                  <div className="text-sm text-gray-600">{t('testimonials.1.title')}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
+              <div className="flex items-center space-x-2 mb-4">
+                <span className="text-yellow-500">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6">
+                {t('testimonials.2.content')}
+              </p>
+              <div className="flex items-center">
+                <img 
+                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                  alt="Sarah Johnson" 
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{t('testimonials.2.name')}</div>
+                  <div className="text-sm text-gray-600">{t('testimonials.2.title')}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
+              <div className="flex items-center space-x-2 mb-4">
+                <span className="text-yellow-500">⭐⭐⭐⭐⭐</span>
+              </div>
+              <p className="text-gray-700 mb-6">
+                {t('testimonials.3.content')}
+              </p>
+              <div className="flex items-center">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                  alt="David Rodriguez" 
+                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                />
+                <div>
+                  <div className="font-semibold text-gray-900">{t('testimonials.3.name')}</div>
+                  <div className="text-sm text-gray-600">{t('testimonials.3.title')}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section id="team" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">{t('team.title')}</h2>
+            <p className="text-xl text-gray-600">
+              {t('team.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-6 rounded-lg text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                alt="Webflow Expert" 
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="font-semibold text-gray-900 mb-2">{t('team.webflow')}</h3>
+              <p className="text-gray-600 text-sm">{t('team.webflow.desc')}</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                alt="Shopify Specialist" 
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="font-semibold text-gray-900 mb-2">{t('team.shopify')}</h3>
+              <p className="text-gray-600 text-sm">{t('team.shopify.desc')}</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                alt="AI Engineer" 
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="font-semibold text-gray-900 mb-2">{t('team.ai')}</h3>
+              <p className="text-gray-600 text-sm">{t('team.ai.desc')}</p>
+            </div>
+            <div className="bg-white p-6 rounded-lg text-center">
+              <img 
+                src="https://images.unsplash.com/photo-1566492031773-4f4e44671d66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&h=150&q=80" 
+                alt="N8N Automation Expert" 
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
+              <h3 className="font-semibold text-gray-900 mb-2">{t('team.n8n')}</h3>
+              <p className="text-gray-600 text-sm">{t('team.n8n.desc')}</p>
             </div>
           </div>
         </div>
@@ -383,7 +685,7 @@ export default function LanguagePage({ params }: PageProps) {
         </div>
       </footer>
 
-      {/* URL Navigation Info (Development Only) */}
+      {/* Domain Switching Info (Development Only) */}
       <DomainInfo />
     </main>
   )

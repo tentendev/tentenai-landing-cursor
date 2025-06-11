@@ -99,6 +99,8 @@ const translations = {
     'story.hero.subtitle': 'How we discovered the gap between AI potential and enterprise reality',
     'story.problem.title': 'The $2 Million Problem',
     'story.problem.content': 'In 2022, we watched a Fortune 500 company spend $2.3 million on an AI transformation project with a Big 4 consultancy. After 18 months, they had beautiful PowerPoint presentations, theoretical frameworks, and zero implemented solutions. Their manual processes remained unchanged, their efficiency problems unsolved.',
+    'story.problem.wasted': 'Wasted on failed AI project',
+    'story.problem.zero': 'Zero implemented solutions',
     'story.discovery.title': 'The Breakthrough Moment',
     'story.discovery.content': 'That\'s when we realized the fundamental disconnect: traditional consultants sell strategies, but enterprises need working solutions. They needed partners who could not just advise, but actually build, implement, and deliver measurable results.',
     'story.solution.title': 'Building the Bridge',
@@ -108,6 +110,8 @@ const translations = {
     'story.impact.stat2': '$10M+ in Operational Savings',
     'story.impact.stat3': '90% Faster Implementation',
     'story.impact.stat4': '100% Client Satisfaction',
+    'story.mission.title': 'Our Mission',
+    'story.mission.desc': 'Bridge the gap between AI potential and enterprise reality',
     
     // Testimonials Section
     'testimonials.title': 'What Enterprise Leaders Say',
@@ -228,6 +232,8 @@ const translations = {
     'story.hero.subtitle': '我們如何發現AI潛力與企業現實之間的差距',
     'story.problem.title': '200萬美元的問題',
     'story.problem.content': '2022年，我們看到一家財富500強企業花費230萬美元與四大諮詢公司進行AI轉型項目。18個月後，他們得到了精美的PowerPoint簡報、理論框架，但零實施解決方案。他們的手動流程依然未變，效率問題依然未解。',
+    'story.problem.wasted': 'Wasted on failed AI project',
+    'story.problem.zero': 'Zero implemented solutions',
     'story.discovery.title': '突破時刻',
     'story.discovery.content': '這時我們意識到根本性的斷層：傳統顧問銷售策略，但企業需要的是實用的解決方案。他們需要的合作夥伴不僅能提供建議，更能實際建構、實施並提供可衡量的結果。',
     'story.solution.title': '架橋築路',
@@ -237,6 +243,8 @@ const translations = {
     'story.impact.stat2': '節省超過 $1,000萬 營運成本',
     'story.impact.stat3': '90% 更快實施速度',
     'story.impact.stat4': '100% 客戶滿意度',
+    'story.mission.title': 'Our Mission',
+    'story.mission.desc': 'Bridge the gap between AI potential and enterprise reality',
     
     // Testimonials Section
     'testimonials.title': '企業領袖怎麼說',

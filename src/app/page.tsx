@@ -320,8 +320,8 @@ export default function Home() {
                 <div className="lg:w-1/2 lg:pr-8">
                   <div className="bg-green-50 p-6 rounded-lg text-center">
                     <div className="text-4xl mb-2">🎯</div>
-                    <div className="text-lg font-semibold text-green-700">Our Mission</div>
-                    <div className="text-sm text-green-600 mt-2">Bridge the gap between AI potential and enterprise reality</div>
+                    <div className="text-lg font-semibold text-green-700">{t('story.mission.title')}</div>
+                    <div className="text-sm text-green-600 mt-2">{t('story.mission.desc')}</div>
                   </div>
                 </div>
               </div>

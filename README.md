@@ -45,8 +45,8 @@ A modern, conversion-optimized landing page for Tenten AI's enterprise AI consul
    ```
 
 2. **Run the development server**:
-   ```bash
-   npm run dev
+```bash
+npm run dev
    ```
 
 3. **Open your browser**:
