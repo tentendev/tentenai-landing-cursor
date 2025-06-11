@@ -432,14 +432,8 @@ export default function LanguagePage({ params }: PageProps) {
                     </th>
                     <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
                       <div className="flex flex-col items-center">
-                        <div className="text-lg font-bold">{t('compare.consultants')}</div>
-                        <div className="text-xs text-gray-500">{t('compare.consultants.sub')}</div>
-                      </div>
-                    </th>
-                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
-                      <div className="flex flex-col items-center">
-                        <div className="text-lg font-bold">{t('compare.agencies')}</div>
-                        <div className="text-xs text-gray-500">{t('compare.agencies.sub')}</div>
+                        <div className="text-lg font-bold">{t('compare.big4')}</div>
+                        <div className="text-xs text-gray-500">{t('compare.big4.sub')}</div>
                       </div>
                     </th>
                     <th className="px-6 py-4 text-center text-sm font-medium text-gray-900">
@@ -452,40 +446,64 @@ export default function LanguagePage({ params }: PageProps) {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   <tr>
-                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.cost')}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature1')}</td>
                     <td className="px-6 py-4 text-center">
-                      <span className="text-green-600 font-semibold">{t('compare.row.cost.tentenai')}</span>
+                      <span className="text-green-500">✓</span>
                     </td>
-                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.cost.consultants')}</td>
-                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.cost.agencies')}</td>
-                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.cost.freelancers')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.timeline')}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature2')}</td>
                     <td className="px-6 py-4 text-center">
-                      <span className="text-green-600 font-semibold">{t('compare.row.timeline.tentenai')}</span>
+                      <span className="text-green-500">✓</span>
                     </td>
-                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.timeline.consultants')}</td>
-                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.timeline.agencies')}</td>
-                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.timeline.freelancers')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.outcome')}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature3')}</td>
                     <td className="px-6 py-4 text-center">
-                      <span className="text-green-600 font-semibold">{t('compare.row.outcome.tentenai')}</span>
+                      <span className="text-green-500">✓</span>
                     </td>
-                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.outcome.consultants')}</td>
-                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.outcome.agencies')}</td>
-                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.outcome.freelancers')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
                   </tr>
                   <tr className="bg-gray-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">{t('compare.row.support')}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature4')}</td>
                     <td className="px-6 py-4 text-center">
-                      <span className="text-green-600 font-semibold">{t('compare.row.support.tentenai')}</span>
+                      <span className="text-green-500">✓</span>
                     </td>
-                    <td className="px-6 py-4 text-center text-red-600">{t('compare.row.support.consultants')}</td>
-                    <td className="px-6 py-4 text-center text-orange-600">{t('compare.row.support.agencies')}</td>
-                    <td className="px-6 py-4 text-center text-gray-600">{t('compare.row.support.freelancers')}</td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="text-red-500">✗</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature5')}</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-semibold">{t('compare.cost.tenten')}</td>
+                    <td className="px-6 py-4 text-center text-red-600 font-semibold">{t('compare.cost.big4')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600 font-semibold">{t('compare.cost.freelance')}</td>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900">{t('compare.feature6')}</td>
+                    <td className="px-6 py-4 text-center text-green-600 font-semibold">{t('compare.timeline.tenten')}</td>
+                    <td className="px-6 py-4 text-center text-red-600 font-semibold">{t('compare.timeline.big4')}</td>
+                    <td className="px-6 py-4 text-center text-orange-600 font-semibold">{t('compare.timeline.freelance')}</td>
                   </tr>
                 </tbody>
               </table>
