@@ -1,9 +1,10 @@
 'use client'
 
 import { useLanguage } from './contexts/LanguageContext'
+import DomainInfo from './components/DomainInfo'
 
 export default function Home() {
-  const { language, setLanguage, t } = useLanguage()
+  const { language, setLanguage, t, redirectToDomain, autoDetectLanguage } = useLanguage()
 
   return (
     <main className="min-h-screen bg-white">
@@ -21,68 +22,95 @@ export default function Home() {
               <a href="#team" className="text-gray-600 hover:text-gray-900">{t('nav.team')}</a>
             </nav>
             <div className="flex items-center space-x-4">
-              {/* Language Toggle */}
-              <div className="flex items-center bg-gray-100 rounded-md p-1">
+              {/* Language Toggle with Geo-Location */}
+              <div className="flex items-center space-x-2">
+                <div className="flex items-center bg-gray-100 rounded-md p-1">
+                  <button
+                    onClick={() => {
+                      setLanguage('en')
+                      redirectToDomain('en')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'en'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    🌍 EN
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('zh')
+                      redirectToDomain('zh')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'zh'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    🇹🇼 繁中
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('zh-cn')
+                      redirectToDomain('zh-cn')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'zh-cn'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    🇨🇳 简中
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('ja')
+                      redirectToDomain('ja')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'ja'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    🇯🇵 日本
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('ko')
+                      redirectToDomain('ko')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'ko'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    🇰🇷 한국
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('ar')
+                      redirectToDomain('ar')
+                    }}
+                    className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                      language === 'ar'
+                        ? 'bg-white text-gray-900 shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                    dir="rtl"
+                  >
+                    🇦🇪 عربي
+                  </button>
+                </div>
                 <button
-                  onClick={() => setLanguage('en')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'en'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                  onClick={autoDetectLanguage}
+                  className="text-xs text-blue-600 hover:text-blue-800 underline px-2 py-1 rounded hover:bg-blue-50"
+                  title="Auto-detect language from browser"
                 >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLanguage('zh')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'zh'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  繁中
-                </button>
-                <button
-                  onClick={() => setLanguage('zh-cn')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'zh-cn'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  简中
-                </button>
-                <button
-                  onClick={() => setLanguage('ja')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ja'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  日本
-                </button>
-                <button
-                  onClick={() => setLanguage('ko')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ko'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                >
-                  한국
-                </button>
-                <button
-                  onClick={() => setLanguage('ar')}
-                  className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-                    language === 'ar'
-                      ? 'bg-white text-gray-900 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
-                  dir="rtl"
-                >
-                  عربي
+                  Auto
                 </button>
               </div>
               <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 font-medium">
@@ -642,6 +670,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Domain Switching Info (Development Only) */}
+      <DomainInfo />
     </main>
   )
 }

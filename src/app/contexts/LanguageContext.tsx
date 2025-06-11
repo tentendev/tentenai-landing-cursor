@@ -1,7 +1,89 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { additionalTranslations } from './AdditionalTranslations'
+
+// Domain mapping for each language
+const domainMapping = {
+  'en': 'tentenai.com',
+  'zh': 'tentenai.tw',
+  'zh-cn': 'tentenai.cn', 
+  'ja': 'tentenai.jp',
+  'ko': 'tentenai.kr',
+  'ar': 'tentenai.ae'
+}
+
+// Language detection from browser locale
+const detectBrowserLanguage = (): Language => {
+  if (typeof window === 'undefined') return 'en'
+  
+  const browserLang = navigator.language.toLowerCase()
+  
+  // Map browser language codes to our supported languages
+  if (browserLang.startsWith('zh-tw') || browserLang.startsWith('zh-hk')) return 'zh'
+  if (browserLang.startsWith('zh-cn') || browserLang.startsWith('zh')) return 'zh-cn'
+  if (browserLang.startsWith('ja')) return 'ja'
+  if (browserLang.startsWith('ko')) return 'ko'
+  if (browserLang.startsWith('ar')) return 'ar'
+  
+  return 'en' // Default to English
+}
+
+// Get current domain from window location
+const getCurrentDomain = (): string => {
+  if (typeof window === 'undefined') return 'localhost:3000'
+  return window.location.host
+}
+
+// Get language from current domain
+const getLanguageFromDomain = (): Language => {
+  const currentDomain = getCurrentDomain()
+  
+  // Find language based on current domain
+  for (const [lang, domain] of Object.entries(domainMapping)) {
+    if (currentDomain.includes(domain) || currentDomain.includes(domain.split('.')[0])) {
+      return lang as Language
+    }
+  }
+  
+  // For development/localhost, check URL parameters or default to browser language
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search)
+    const langParam = urlParams.get('lang')
+    
+    if (langParam && Object.keys(domainMapping).includes(langParam)) {
+      return langParam as Language
+    }
+  }
+  
+  return detectBrowserLanguage() as Language
+}
+
+// Redirect to appropriate domain based on language
+const redirectToDomain = (targetLang: string) => {
+  if (typeof window === 'undefined') return
+  
+  const currentDomain = getCurrentDomain()
+  const targetDomain = domainMapping[targetLang as keyof typeof domainMapping]
+  
+  // Don't redirect if already on correct domain
+  if (currentDomain.includes(targetDomain)) return
+  
+  // For development, use URL parameters instead of domain switching
+  if (currentDomain.includes('localhost') || currentDomain.includes('vercel.app')) {
+    const currentUrl = new URL(window.location.href)
+    currentUrl.searchParams.set('lang', targetLang)
+    window.history.pushState({}, '', currentUrl.toString())
+    return
+  }
+  
+  // For production, redirect to appropriate domain
+  const protocol = window.location.protocol
+  const pathname = window.location.pathname
+  const search = window.location.search
+  
+  window.location.href = `${protocol}//${targetDomain}${pathname}${search}`
+}
 
 type Language = 'en' | 'zh' | 'zh-cn' | 'ja' | 'ko' | 'ar'
 
@@ -9,6 +91,8 @@ interface LanguageContextType {
   language: Language
   setLanguage: (lang: Language) => void
   t: (key: string) => string
+  redirectToDomain: (lang: Language) => void
+  autoDetectLanguage: () => void
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -276,17 +360,32 @@ const translations = {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en')
+  const [language, setLanguage] = useState<Language>(getLanguageFromDomain())
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key
   }
 
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  )
+  const handleRedirectToDomain = (lang: Language) => {
+    redirectToDomain(lang)
+  }
+
+  const autoDetectLanguage = () => {
+    const newLanguage = getLanguageFromDomain()
+    if (newLanguage !== language) {
+      setLanguage(newLanguage)
+    }
+  }
+
+  useEffect(() => {
+    autoDetectLanguage()
+  }, [language]) // Add language as dependency to satisfy React hooks
+
+      return (
+      <LanguageContext.Provider value={{ language, setLanguage, t, redirectToDomain: handleRedirectToDomain, autoDetectLanguage }}>
+        {children}
+      </LanguageContext.Provider>
+    )
 }
 
 export function useLanguage() {
