@@ -55,6 +55,20 @@ export const additionalTranslations = {
     'story.impact.stat4': '100% 客户满意度',
     'story.mission.title': '我们的使命',
     'story.mission.desc': '弥合AI潜力与企业现实之间的差距',
+    'story.discovery.gap.title': '差距:',
+    'story.discovery.gap.subtitle': '策略 ≠ 解决方案',
+    'story.discovery.need.title': '企业需要的是:',
+    'story.discovery.need.subtitle': '可运作的AI系统',
+    
+    // Team Section
+    'team.ai.short': 'AI',
+    'team.ai.long': '专业',
+    'team.web.short': '网页',
+    'team.web.long': '设计',
+    'team.ecom.short': '电商',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': '自动',
+    'team.auto.long': 'N8N',
     
     // CTA and Footer (abbreviated for space)
     'cta.title': '准备好用AI转型您的业务了吗？',
@@ -96,6 +110,20 @@ export const additionalTranslations = {
     'story.problem.zero': '実装されたソリューションはゼロ',
     'story.mission.title': '私たちのミッション',
     'story.mission.desc': 'AIの可能性と企業現実のギャップを埋める',
+    'story.discovery.gap.title': 'ギャップ:',
+    'story.discovery.gap.subtitle': '戦略 ≠ ソリューション',
+    'story.discovery.need.title': '企業が必要とするもの:',
+    'story.discovery.need.subtitle': '実用的なAIシステム',
+    
+    // Team Section
+    'team.ai.short': 'AI',
+    'team.ai.long': '専門知識',
+    'team.web.short': 'Web',
+    'team.web.long': 'デザイン',
+    'team.ecom.short': 'Ecom',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': 'Auto',
+    'team.auto.long': 'N8N',
     
     'cta.title': 'AIでビジネスを変革する準備はできましたか？',
     'footer.copyright': '© 2024 Tenten AI. 全著作権所有。',
@@ -136,6 +164,20 @@ export const additionalTranslations = {
     'story.problem.zero': '구현된 솔루션 없음',
     'story.mission.title': '우리의 미션',
     'story.mission.desc': 'AI 잠재력과 기업 현실의 격차를 해소',
+    'story.discovery.gap.title': '격차:',
+    'story.discovery.gap.subtitle': '전략 ≠ 솔루션',
+    'story.discovery.need.title': '기업이 필요로 하는 것:',
+    'story.discovery.need.subtitle': '실용적인 AI 시스템',
+    
+    // Team Section
+    'team.ai.short': 'AI',
+    'team.ai.long': '전문성',
+    'team.web.short': 'Web',
+    'team.web.long': '디자인',
+    'team.ecom.short': 'Ecom',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': 'Auto',
+    'team.auto.long': 'N8N',
     
     'cta.title': 'AI로 비즈니스를 혁신할 준비가 되셨나요?',
     'footer.copyright': '© 2024 Tenten AI. 모든 권리 보유.',
@@ -165,7 +207,7 @@ export const additionalTranslations = {
     'services.subtitle': 'كل ما تحتاجه مؤسستك للهيمنة بالذكاء الاصطناعي. فريق واحد، تحول كامل.',
     'services.ai.title': 'استشارات الذكاء الاصطناعي',
     'services.ai.desc': 'تحول الذكاء الاصطناعي المؤسسي، أتمتة الأعمال، سير العمل الوكيل، والتكامل الاستراتيجي للذكاء الاصطناعي للشركات ذات 1000+ موظف.',
-    'services.ai.replaces': 'يحل محل رسوم الاستشارة $50K-$200K',
+    'services.ai.replaces': '$50K-$200K 컨설팅 비용 대체',
     
     // Story Section
     'story.hero.title': 'ثورة الذكاء الاصطناعي بدأت بمشكلة',
@@ -176,6 +218,20 @@ export const additionalTranslations = {
     'story.problem.zero': 'لا حلول مطبقة',
     'story.mission.title': 'مهمتنا',
     'story.mission.desc': 'سد الفجوة بين إمكانات الذكاء الاصطناعي وواقع المؤسسات',
+    'story.discovery.gap.title': 'الفجوة:',
+    'story.discovery.gap.subtitle': 'الاستراتيجيات ≠ الحلول',
+    'story.discovery.need.title': 'ما تحتاجه المؤسسات:',
+    'story.discovery.need.subtitle': 'أنظمة ذكاء اصطناعي عملية',
+    
+    // Team Section
+    'team.ai.short': 'AI',
+    'team.ai.long': 'خبرة',
+    'team.web.short': 'Web',
+    'team.web.long': 'تصميم',
+    'team.ecom.short': 'Ecom',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': 'Auto',
+    'team.auto.long': 'N8N',
     
     'cta.title': 'هل أنت مستعد لتحويل عملك بالذكاء الاصطناعي؟',
     'footer.copyright': '© 2024 Tenten AI. جميع الحقوق محفوظة.',

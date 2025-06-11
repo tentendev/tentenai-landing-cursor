@@ -246,10 +246,10 @@ export default function Home() {
                 <div className="hidden lg:block w-8 h-8 bg-orange-400 rounded-full border-4 border-white shadow-lg z-10"></div>
                 <div className="lg:w-1/2 lg:pr-8">
                   <div className="bg-orange-50 p-6 rounded-lg">
-                    <div className="text-lg font-semibold text-orange-700 mb-2">The Gap:</div>
-                    <div className="text-sm text-orange-600 mb-4">Strategies ≠ Solutions</div>
-                    <div className="text-lg font-semibold text-orange-700 mb-2">What Enterprises Need:</div>
-                    <div className="text-sm text-orange-600">Working AI Systems</div>
+                    <div className="text-lg font-semibold text-orange-700 mb-2">{t('story.discovery.gap.title')}</div>
+                    <div className="text-sm text-orange-600 mb-4">{t('story.discovery.gap.subtitle')}</div>
+                    <div className="text-lg font-semibold text-orange-700 mb-2">{t('story.discovery.need.title')}</div>
+                    <div className="text-sm text-orange-600">{t('story.discovery.need.subtitle')}</div>
                   </div>
                 </div>
               </div>
@@ -272,20 +272,20 @@ export default function Home() {
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
-                        <div className="text-2xl font-bold text-blue-600">AI</div>
-                        <div className="text-xs text-blue-700">Expertise</div>
+                        <div className="text-2xl font-bold text-blue-600">{t('team.ai.short')}</div>
+                        <div className="text-xs text-blue-700">{t('team.ai.long')}</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-blue-600">Web</div>
-                        <div className="text-xs text-blue-700">Design</div>
+                        <div className="text-2xl font-bold text-blue-600">{t('team.web.short')}</div>
+                        <div className="text-xs text-blue-700">{t('team.web.long')}</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-blue-600">Ecom</div>
-                        <div className="text-xs text-blue-700">Shopify</div>
+                        <div className="text-2xl font-bold text-blue-600">{t('team.ecom.short')}</div>
+                        <div className="text-xs text-blue-700">{t('team.ecom.long')}</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-blue-600">Auto</div>
-                        <div className="text-xs text-blue-700">N8N</div>
+                        <div className="text-2xl font-bold text-blue-600">{t('team.auto.short')}</div>
+                        <div className="text-xs text-blue-700">{t('team.auto.long')}</div>
                       </div>
                     </div>
                   </div>

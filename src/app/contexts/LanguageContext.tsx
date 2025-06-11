@@ -112,6 +112,10 @@ const translations = {
     'story.impact.stat4': '100% Client Satisfaction',
     'story.mission.title': 'Our Mission',
     'story.mission.desc': 'Bridge the gap between AI potential and enterprise reality',
+    'story.discovery.gap.title': 'The Gap:',
+    'story.discovery.gap.subtitle': 'Strategies ≠ Solutions',
+    'story.discovery.need.title': 'What Enterprises Need:',
+    'story.discovery.need.subtitle': 'Working AI Systems',
     
     // Testimonials Section
     'testimonials.title': 'What Enterprise Leaders Say',
@@ -145,6 +149,14 @@ const translations = {
     'team.ai.desc': 'Machine learning and agentic workflow architect',
     'team.n8n': 'N8N Automation Expert',
     'team.n8n.desc': 'Business process automation and workflow optimization',
+    'team.ai.short': 'AI',
+    'team.ai.long': 'Expertise',
+    'team.web.short': 'Web',
+    'team.web.long': 'Design',
+    'team.ecom.short': 'Ecom',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': 'Auto',
+    'team.auto.long': 'N8N',
     
     // CTA Section
     'cta.title': 'Ready to Transform Your Business with AI?',
@@ -243,8 +255,12 @@ const translations = {
     'story.impact.stat2': '節省超過 $1,000萬 營運成本',
     'story.impact.stat3': '90% 更快實施速度',
     'story.impact.stat4': '100% 客戶滿意度',
-    'story.mission.title': 'Our Mission',
-    'story.mission.desc': 'Bridge the gap between AI potential and enterprise reality',
+    'story.mission.title': '我們的使命',
+    'story.mission.desc': '弥合AI潛力與企業現實之間的差距',
+    'story.discovery.gap.title': '差距:',
+    'story.discovery.gap.subtitle': '策略 ≠ 解決方案',
+    'story.discovery.need.title': '企業需要的是:',
+    'story.discovery.need.subtitle': '可運作的AI系統',
     
     // Testimonials Section
     'testimonials.title': '企業領袖怎麼說',
@@ -278,6 +294,14 @@ const translations = {
     'team.ai.desc': '機器學習和智能代理工作流程架構師',
     'team.n8n': 'N8N 自動化專家',
     'team.n8n.desc': '業務流程自動化和工作流程優化',
+    'team.ai.short': 'AI',
+    'team.ai.long': '專業',
+    'team.web.short': '網頁',
+    'team.web.long': '設計',
+    'team.ecom.short': '電商',
+    'team.ecom.long': 'Shopify',
+    'team.auto.short': '自動',
+    'team.auto.long': 'N8N',
     
     // CTA Section
     'cta.title': '準備好用AI轉型您的業務了嗎？',
