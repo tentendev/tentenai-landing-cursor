@@ -15,13 +15,11 @@ const urlMapping = {
 export default function DomainInfo() {
   const { language } = useLanguage()
   const [currentUrl, setCurrentUrl] = useState<string>('')
-  const [browserLang, setBrowserLang] = useState<string>('')
   const [isDevelopment, setIsDevelopment] = useState<boolean>(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentUrl(window.location.pathname)
-      setBrowserLang(navigator.language)
       setIsDevelopment(
         window.location.host.includes('localhost') || 
         window.location.host.includes('vercel.app')
@@ -40,10 +38,9 @@ export default function DomainInfo() {
         <div><strong>Current URL:</strong> {currentUrl}</div>
         <div><strong>Recommended:</strong> {recommendedUrl}</div>
         <div><strong>Language:</strong> {language}</div>
-        <div><strong>Browser:</strong> {browserLang}</div>
         <div className="mt-2 text-xs opacity-75 space-y-1">
-          <div>🌍 Auto-detects browser language</div>
           <div>🔗 URLs: /, /zh, /ja, /ko, /zh-cn, /ar</div>
+          <div>👆 Manual language switching only</div>
         </div>
       </div>
     </div>

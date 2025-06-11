@@ -4,21 +4,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 import { additionalTranslations } from './AdditionalTranslations'
 import { useRouter, usePathname } from 'next/navigation'
 
-// Language detection from browser locale
-const detectBrowserLanguage = (): Language => {
-  if (typeof window === 'undefined') return 'en'
-  
-  const browserLang = navigator.language.toLowerCase()
-  
-  // Map browser language codes to our supported languages
-  if (browserLang.startsWith('zh-tw') || browserLang.startsWith('zh-hk')) return 'zh'
-  if (browserLang.startsWith('zh-cn') || browserLang.startsWith('zh')) return 'zh-cn'
-  if (browserLang.startsWith('ja')) return 'ja'
-  if (browserLang.startsWith('ko')) return 'ko'
-  if (browserLang.startsWith('ar')) return 'ar'
-  
-  return 'en' // Default to English
-}
+// Manual language switching only - no automatic detection
 
 // Get language from current URL path
 const getLanguageFromPath = (pathname: string): Language => {
@@ -42,7 +28,6 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void
   t: (key: string) => string
   navigateToLanguage: (lang: Language) => void
-  autoDetectLanguage: () => void
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -334,30 +319,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const autoDetectLanguage = () => {
+  // Update language when path changes
+  useEffect(() => {
     const currentLang = getLanguageFromPath(pathname)
     if (currentLang !== language) {
       setLanguage(currentLang)
     }
-  }
-
-  // Auto-detect browser language on first visit to root
-  useEffect(() => {
-    if (pathname === '/' && language === 'en') {
-      const browserLang = detectBrowserLanguage()
-      if (browserLang !== 'en') {
-        navigateToLanguage(browserLang)
-      }
-    }
-  }, [pathname, language, navigateToLanguage])
-
-  // Update language when path changes
-  useEffect(() => {
-    autoDetectLanguage()
-  }, [pathname, autoDetectLanguage])
+  }, [pathname, language, setLanguage])
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, navigateToLanguage, autoDetectLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, navigateToLanguage }}>
       {children}
     </LanguageContext.Provider>
   )

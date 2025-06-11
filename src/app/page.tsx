@@ -4,7 +4,7 @@ import { useLanguage } from './contexts/LanguageContext'
 import DomainInfo from './components/DomainInfo'
 
 export default function Home() {
-  const { language, t, navigateToLanguage, autoDetectLanguage } = useLanguage()
+  const { language, t, navigateToLanguage } = useLanguage()
 
   return (
     <main className="min-h-screen bg-white">
@@ -87,13 +87,7 @@ export default function Home() {
                     🇦🇪 عربي
                   </button>
                 </div>
-                <button
-                  onClick={autoDetectLanguage}
-                  className="text-xs text-blue-600 hover:text-blue-800 underline px-2 py-1 rounded hover:bg-blue-50"
-                  title="Auto-detect language from browser"
-                >
-                  Auto
-                </button>
+
               </div>
               <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 font-medium">
                 {t('nav.getStarted')}
